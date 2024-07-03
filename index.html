@@ -28,48 +28,57 @@
         .button:focus {
             outline: none;
         }
-        .giraffe {
+        .poop {
             position: absolute;
             white-space: pre;
-            font-size: 1.5em;
+            font-size: 1em;
+            line-height: 1em;
         }
     </style>
 </head>
 <body>
     <button class="button" onclick="window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'">PEEPEEPOOPOO</button>
-    <div class="giraffe" id="giraffe">
-        🦒
+    <div class="poop" id="poop">
+         _______
+        /       \
+       /         \
+      /           \
+     |             |
+     |  ()     ()  |
+     |     ___     |
+      \__       __/
+         |_______|
     </div>
     <script>
-        // JavaScript to make the giraffe move around the screen
+        // JavaScript to make the poop move around the screen
         document.addEventListener('DOMContentLoaded', () => {
-            const giraffe = document.getElementById('giraffe');
+            const poop = document.getElementById('poop');
             let x = Math.random() * window.innerWidth;
             let y = Math.random() * window.innerHeight;
             let dx = 2;
             let dy = 2;
 
-            function moveGiraffe() {
+            function movePoop() {
                 x += dx;
                 y += dy;
 
-                if (x + giraffe.offsetWidth > window.innerWidth || x < 0) {
+                if (x + poop.offsetWidth > window.innerWidth || x < 0) {
                     dx = -dx;
                 }
-                if (y + giraffe.offsetHeight > window.innerHeight || y < 0) {
+                if (y + poop.offsetHeight > window.innerHeight || y < 0) {
                     dy = -dy;
                 }
 
-                giraffe.style.left = x + 'px';
-                giraffe.style.top = y + 'px';
+                poop.style.left = x + 'px';
+                poop.style.top = y + 'px';
 
-                requestAnimationFrame(moveGiraffe);
+                requestAnimationFrame(movePoop);
             }
 
-            giraffe.style.left = x + 'px';
-            giraffe.style.top = y + 'px';
+            poop.style.left = x + 'px';
+            poop.style.top = y + 'px';
 
-            moveGiraffe();
+            movePoop();
         });
     </script>
 </body>

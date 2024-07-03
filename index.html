@@ -34,6 +34,10 @@
             font-size: 1em;
             line-height: 1em;
         }
+        .emoji {
+            position: absolute;
+            font-size: 2em;
+        }
     </style>
 </head>
 <body>
@@ -49,36 +53,46 @@
       \__       __/
          |_______|
     </div>
+    <div class="emoji" id="emoji1">😀</div>
+    <div class="emoji" id="emoji2">😂</div>
+    <div class="emoji" id="emoji3">😎</div>
+    <div class="emoji" id="emoji4">🤔</div>
+    <div class="emoji" id="emoji5">🥳</div>
     <script>
-        // JavaScript to make the poop move around the screen
+        // JavaScript to make the poop and emojis move around the screen
         document.addEventListener('DOMContentLoaded', () => {
             const poop = document.getElementById('poop');
-            let x = Math.random() * window.innerWidth;
-            let y = Math.random() * window.innerHeight;
-            let dx = 2;
-            let dy = 2;
+            const emojis = Array.from(document.getElementsByClassName('emoji'));
+            const elements = [poop, ...emojis];
 
-            function movePoop() {
-                x += dx;
-                y += dy;
+            elements.forEach(element => {
+                let x = Math.random() * window.innerWidth;
+                let y = Math.random() * window.innerHeight;
+                let dx = (Math.random() - 0.5) * 4;
+                let dy = (Math.random() - 0.5) * 4;
 
-                if (x + poop.offsetWidth > window.innerWidth || x < 0) {
-                    dx = -dx;
+                function moveElement() {
+                    x += dx;
+                    y += dy;
+
+                    if (x + element.offsetWidth > window.innerWidth || x < 0) {
+                        dx = -dx;
+                    }
+                    if (y + element.offsetHeight > window.innerHeight || y < 0) {
+                        dy = -dy;
+                    }
+
+                    element.style.left = x + 'px';
+                    element.style.top = y + 'px';
+
+                    requestAnimationFrame(moveElement);
                 }
-                if (y + poop.offsetHeight > window.innerHeight || y < 0) {
-                    dy = -dy;
-                }
 
-                poop.style.left = x + 'px';
-                poop.style.top = y + 'px';
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
 
-                requestAnimationFrame(movePoop);
-            }
-
-            poop.style.left = x + 'px';
-            poop.style.top = y + 'px';
-
-            movePoop();
+                moveElement();
+            });
         });
     </script>
 </body>

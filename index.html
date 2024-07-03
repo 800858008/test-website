@@ -12,11 +12,12 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
             color: white;
             font-family: Arial, sans-serif;
         }
         .button {
-            font-size: 3em;
+            font-size: 5em;
             font-weight: bold;
             color: white;
             background-color: transparent;
@@ -27,9 +28,47 @@
         .button:focus {
             outline: none;
         }
+        .giraffe {
+            position: absolute;
+            width: 100px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
-    <button class="button" onclick="window.location.href='https://www.youtube.com/watch?v=2qBlE2-WL60'">PEEPEEPOOPOO</button>
+    <button class="button" onclick="window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'">PEEPEEPOOPOO</button>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Giraffe_Silhouette.png" class="giraffe" id="giraffe" alt="Giraffe">
+    <script>
+        // JavaScript to make the giraffe move around the screen
+        document.addEventListener('DOMContentLoaded', () => {
+            const giraffe = document.getElementById('giraffe');
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            let dx = 2;
+            let dy = 2;
+
+            function moveGiraffe() {
+                x += dx;
+                y += dy;
+
+                if (x + giraffe.width > window.innerWidth || x < 0) {
+                    dx = -dx;
+                }
+                if (y + giraffe.height > window.innerHeight || y < 0) {
+                    dy = -dy;
+                }
+
+                giraffe.style.left = x + 'px';
+                giraffe.style.top = y + 'px';
+
+                requestAnimationFrame(moveGiraffe);
+            }
+
+            giraffe.style.left = x + 'px';
+            giraffe.style.top = y + 'px';
+
+            moveGiraffe();
+        });
+    </script>
 </body>
 </html>

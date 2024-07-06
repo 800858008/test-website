@@ -37,12 +37,13 @@
         .emoji {
             position: absolute;
             font-size: 2em;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <button class="button" onclick="window.location.href='https://www.youtube.com/watch?v=2qBlE2-WL60'">PEEPEEPOOPOO</button>
-    <div class="poop" id="poop">
+    <div class="poop emoji" id="poop">
          _______
         /       \
        /         \
@@ -69,7 +70,19 @@
     <div class="emoji" id="animal9">🐨</div>
     <div class="emoji" id="animal10">🐯</div>
     <script>
-        // JavaScript to make the poop and emojis move around the screen
+        const pewdiepieVideos = [
+            'https://www.youtube.com/watch?v=1Cs0qyQDIJk',
+            'https://www.youtube.com/watch?v=1wX03D9cAtY',
+            'https://www.youtube.com/watch?v=2lAe1cqCOXo',
+            'https://www.youtube.com/watch?v=3tmd-ClpJxA',
+            'https://www.youtube.com/watch?v=4aQDOUbErNg',
+            'https://www.youtube.com/watch?v=5SPKq7lWc6E',
+            'https://www.youtube.com/watch?v=6syYaWAgiGQ',
+            'https://www.youtube.com/watch?v=7T3Z_R5r0VQ',
+            'https://www.youtube.com/watch?v=8NRlmWnC0A8',
+            'https://www.youtube.com/watch?v=9kA3xg4AI9Q'
+        ];
+
         document.addEventListener('DOMContentLoaded', () => {
             const poop = document.getElementById('poop');
             const emojis = Array.from(document.getElementsByClassName('emoji'));
@@ -102,6 +115,11 @@
                 element.style.top = y + 'px';
 
                 moveElement();
+
+                element.addEventListener('click', () => {
+                    const randomIndex = Math.floor(Math.random() * pewdiepieVideos.length);
+                    window.location.href = pewdiepieVideos[randomIndex];
+                });
             });
         });
     </script>
